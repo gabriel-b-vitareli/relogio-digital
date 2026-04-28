@@ -1,0 +1,144 @@
+/* RESET E CONFIGURAÇÕES GERAIS */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0e0e0e;
+  --card: #1a1a1a;
+  --card-bot: #141414;
+  --border: rgba(255,255,255,0.08);
+  --border-mid: rgba(255,255,255,0.14);
+  --text: #f0f0f0;
+  --muted: #555;
+  --card-height: 100px;
+  --card-width: 70px;
+  --half-height: 50px;
+}
+
+body {
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Bebas Neue', system-ui, sans-serif;
+}
+
+.clock-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.cards {
+  display: flex;
+  gap: 6px;
+}
+
+/* ESTRUTURA DO CARD */
+.card {
+  position: relative;
+  width: var(--card-width);
+  height: var(--card-height);
+  perspective: 600px;
+  border-radius: 8px;
+  color: var(--text);
+}
+
+/* ESTILIZAÇÃO DAS METADES */
+.card-top,
+.card-bot,
+.flip-top,
+.flip-bot {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  backface-visibility: hidden;
+}
+
+/* Metades Superiores */
+.card-top,
+.flip-top {
+  top: 0;
+  background: var(--card);
+  border-radius: 8px 8px 0 0;
+  border: 1px solid var(--border);
+  border-bottom: 0.5px solid var(--border-mid);
+  align-items: flex-start; /* Alinha o span ao topo */
+}
+
+/* Metades Inferiores */
+.card-bot,
+.flip-bot {
+  bottom: 0;
+  background: var(--card-bot);
+  border-radius: 0 0 8px 8px;
+  border: 1px solid var(--border);
+  border-top: 0.5px solid var(--border-mid);
+  align-items: flex-end; /* Alinha o span à base */
+}
+
+/* AJUSTE DO NÚMERO (O segredo do alinhamento) */
+.card span {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 75px;
+  line-height: var(--card-height); /* Faz o número ter a altura total do card */
+}
+
+/* Posiciona o número para as partes de cima */
+.card-top span,
+.flip-top span {
+  top: 0;
+}
+
+/* Posiciona o número para as partes de baixo (sobe ele para cortar) */
+.card-bot span,
+.flip-bot span {
+  bottom: 0;
+}
+
+/* ANIMAÇÃO E POSICIONAMENTO DO FLIP */
+.flip-top {
+  transform-origin: bottom;
+  z-index: 3;
+}
+
+.flip-bot {
+  transform-origin: top;
+  transform: rotateX(90deg);
+  z-index: 2;
+}
+
+/* ELEMENTOS AUXILIARES */
+.label {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.sep {
+  font-size: 40px;
+  color: var(--muted);
+  margin-bottom: 22px;
+  line-height: 1;
+}
