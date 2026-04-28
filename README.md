@@ -1,4 +1,4 @@
-# 🕒 Modern Flip Clock
+# 🕰️ Modern Flip Clock
 
 Este é um projeto de relógio digital com efeito **Flip** (folheado), inspirado nos clássicos relógios analógicos de aeroportos e estações de trem. Ele utiliza transições 3D para criar uma experiência visual fluida e moderna.
 
