@@ -74,3 +74,14 @@ Nota: Este projeto foi otimizado para navegadores modernos que suportam transfor
 - Android Browser: Versões 4.4+
 - Chrome para Android: Suporte total
 - Safari no iOS: Suporte total
+
+## Metas Futuras:
+
+Com o projeto em andamento, mais funcionalidades serão adicionadas com o tempo. No momento, as metas de funções a serem adicionadas são as seguintes:
+
+- [X] Relógio de Horas, Minutos e Segundos em tempo real.
+- [ ] Data em tempo real.
+- [ ] Cronômetro.
+- [ ] Temporizador.
+- [ ] Temas (Para o usuário poder selecionar entre diferentes cores de fundo, imagens de fundo, fontes do relógio, estilo do relógio, etc).
+- [ ] Diferentes linguagens.
