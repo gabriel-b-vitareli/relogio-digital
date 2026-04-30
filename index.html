@@ -3,40 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Flip Clock</title>
-
-  <!-- Fonte -->
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    
-  <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<div class="clock-wrap">
-  <div class="unit">
-    <div class="cards" id="h"></div>
-    <span class="label">horas</span>
+<!-- RELÓGIO -->
+<div class="page" id="page-clock">
+  <div class="clock-wrap">
+    <div class="unit">
+      <div class="cards" id="h"></div>
+      <span class="label">horas</span>
+    </div>
+    <div class="sep">:</div>
+    <div class="unit">
+      <div class="cards" id="m"></div>
+      <span class="label">minutos</span>
+    </div>
+    <div class="sep">:</div>
+    <div class="unit">
+      <div class="cards" id="s"></div>
+      <span class="label">segundos</span>
+    </div>
   </div>
+  <div class="date-display" id="date-display"></div>
+</div>
 
-  <div class="sep">:</div>
-
-  <div class="unit">
-    <div class="cards" id="m"></div>
-    <span class="label">minutos</span>
+<!-- CRONÔMETRO -->
+<div class="page hidden" id="page-stopwatch">
+  <div class="clock-wrap">
+    <div class="unit">
+      <div class="cards" id="sw-m"></div>
+      <span class="label">minutos</span>
+    </div>
+    <div class="sep">:</div>
+    <div class="unit">
+      <div class="cards" id="sw-s"></div>
+      <span class="label">segundos</span>
+    </div>
+    <div class="sep sw-sep">.</div>
+    <div class="unit">
+      <div class="cards" id="sw-cs"></div>
+      <span class="label">centésimos</span>
+    </div>
   </div>
-
-  <div class="sep">:</div>
-
-  <div class="unit">
-    <div class="cards" id="s"></div>
-    <span class="label">segundos</span>
+  <div class="sw-controls">
+    <button class="sw-btn" id="sw-startstop">iniciar</button>
+    <button class="sw-btn sw-btn--ghost" id="sw-reset">zerar</button>
   </div>
 </div>
 
-<!-- JS no final (melhor prática) -->
-<script src="js/script.js"></script>
+<!-- FAB CRONÔMETRO -->
+<button class="fab" id="fab" title="Cronômetro">
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="13" r="8"/>
+    <polyline points="12 9 12 13 14.5 15.5"/>
+    <path d="M9 2h6"/>
+    <path d="M12 2v3"/>
+  </svg>
+</button>
 
+<script src="js/script.js"></script>
 </body>
 </html>
