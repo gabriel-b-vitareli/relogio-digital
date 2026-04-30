@@ -17,7 +17,6 @@
   --muted: #555;
   --card-height: 100px;
   --card-width: 70px;
-  --half-height: 50px;
 }
 
 body {
@@ -27,8 +26,28 @@ body {
   justify-content: center;
   min-height: 100vh;
   font-family: 'Bebas Neue', system-ui, sans-serif;
+  overflow: hidden;
 }
 
+/* PÁGINAS */
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  position: absolute;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page.hidden {
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+}
+
+/* RELÓGIO */
 .clock-wrap {
   display: flex;
   align-items: center;
@@ -47,7 +66,7 @@ body {
   gap: 6px;
 }
 
-/* ESTRUTURA DO CARD */
+/* CARD */
 .card {
   position: relative;
   width: var(--card-width);
@@ -57,7 +76,6 @@ body {
   color: var(--text);
 }
 
-/* ESTILIZAÇÃO DAS METADES */
 .card-top,
 .card-bot,
 .flip-top,
@@ -72,7 +90,6 @@ body {
   backface-visibility: hidden;
 }
 
-/* Metades Superiores */
 .card-top,
 .flip-top {
   top: 0;
@@ -80,10 +97,9 @@ body {
   border-radius: 8px 8px 0 0;
   border: 1px solid var(--border);
   border-bottom: 0.5px solid var(--border-mid);
-  align-items: flex-start; /* Alinha o span ao topo */
+  align-items: flex-start;
 }
 
-/* Metades Inferiores */
 .card-bot,
 .flip-bot {
   bottom: 0;
@@ -91,31 +107,20 @@ body {
   border-radius: 0 0 8px 8px;
   border: 1px solid var(--border);
   border-top: 0.5px solid var(--border-mid);
-  align-items: flex-end; /* Alinha o span à base */
+  align-items: flex-end;
 }
 
-/* AJUSTE DO NÚMERO (O segredo do alinhamento) */
 .card span {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   font-size: 75px;
-  line-height: var(--card-height); /* Faz o número ter a altura total do card */
+  line-height: var(--card-height);
 }
 
-/* Posiciona o número para as partes de cima */
-.card-top span,
-.flip-top span {
-  top: 0;
-}
+.card-top span, .flip-top span { top: 0; }
+.card-bot span, .flip-bot span { bottom: 0; }
 
-/* Posiciona o número para as partes de baixo (sobe ele para cortar) */
-.card-bot span,
-.flip-bot span {
-  bottom: 0;
-}
-
-/* ANIMAÇÃO E POSICIONAMENTO DO FLIP */
 .flip-top {
   transform-origin: bottom;
   z-index: 3;
@@ -127,7 +132,7 @@ body {
   z-index: 2;
 }
 
-/* ELEMENTOS AUXILIARES */
+/* LABEL */
 .label {
   font-family: system-ui, sans-serif;
   font-size: 11px;
@@ -141,4 +146,63 @@ body {
   color: var(--muted);
   margin-bottom: 22px;
   line-height: 1;
+  user-select: none;
 }
+
+/* DATA */
+.date-display {
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* FAB */
+.fab {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 1px solid var(--border-mid);
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  z-index: 10;
+}
+
+.fab:hover { color: var(--text); border-color: rgba(255,255,255,0.28); background: #222; }
+.fab.active { color: var(--text); border-color: rgba(255,255,255,0.3); }
+
+/* CRONÔMETRO */
+.sw-sep { font-size: 28px; margin-bottom: 22px; }
+
+.sw-controls {
+  display: flex;
+  gap: 12px;
+}
+
+.sw-btn {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 10px 28px;
+  border-radius: 6px;
+  border: 1px solid var(--border-mid);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.sw-btn:hover { background: #222; border-color: rgba(255,255,255,0.28); }
+.sw-btn.running { border-color: rgba(255,80,80,0.5); color: #ff6060; }
+.sw-btn--ghost { background: transparent; color: var(--muted); }
+.sw-btn--ghost:hover { background: transparent; color: var(--text); }
