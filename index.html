@@ -54,6 +54,59 @@
   </div>
 </div>
 
+<!-- TEMPORIZADOR -->
+<div class="page hidden" id="page-timer">
+  <div class="clock-wrap">
+    <div class="unit">
+      <div class="cards" id="tm-h"></div>
+      <span class="label">horas</span>
+    </div>
+    <div class="sep">:</div>
+    <div class="unit">
+      <div class="cards" id="tm-m"></div>
+      <span class="label">minutos</span>
+    </div>
+    <div class="sep">:</div>
+    <div class="unit">
+      <div class="cards" id="tm-s"></div>
+      <span class="label">segundos</span>
+    </div>
+  </div>
+
+  <!-- INPUT DE CONFIGURAÇÃO -->
+  <div class="tm-setup" id="tm-setup">
+    <div class="tm-input-group">
+      <input class="tm-input" id="tm-input-h" type="number" min="0" max="99" value="0" placeholder="00">
+      <span class="tm-input-label">h</span>
+    </div>
+    <span class="tm-input-sep">:</span>
+    <div class="tm-input-group">
+      <input class="tm-input" id="tm-input-m" type="number" min="0" max="59" value="0" placeholder="00">
+      <span class="tm-input-label">m</span>
+    </div>
+    <span class="tm-input-sep">:</span>
+    <div class="tm-input-group">
+      <input class="tm-input" id="tm-input-s" type="number" min="0" max="59" value="0" placeholder="00">
+      <span class="tm-input-label">s</span>
+    </div>
+  </div>
+
+  <div class="sw-controls">
+    <button class="sw-btn" id="tm-startstop">iniciar</button>
+    <button class="sw-btn sw-btn--ghost" id="tm-reset">zerar</button>
+  </div>
+</div>
+
+<!-- FAB TEMPORIZADOR -->
+<button class="fab fab--timer" id="fab-timer" title="Temporizador">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="7" width="20" height="15" rx="2"/>
+    <path d="M16 2H8"/>
+    <path d="M12 12v4"/>
+    <path d="M10 14h4"/>
+  </svg>
+</button>
+
 <!-- FAB CRONÔMETRO -->
 <button class="fab" id="fab" title="Cronômetro">
   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
